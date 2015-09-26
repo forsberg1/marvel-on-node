@@ -1,0 +1,49 @@
+body {
+  background: url('/images/marvel.png') center center no-repeat fixed,linear-gradient(90deg, #C23E3E, black);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+
+}
+html {
+   background: ; /* For Safari 5.1 to 6.0 */
+
+}
+
+input[type="search"] {
+  font-family: 'Bangers', cursive;
+  color: #B03633;
+
+  border: none;
+  height: 80px;
+  font-size: 22pt;
+  text-align: center;
+  border-radius: none !important;
+  background: rgb(54, 25, 25);
+  background: rgba(54, 25, 25, .9);
+  -webkit-box-shadow: inset 2px 2px 5px 0px rgba(0,0,0,0.19);
+  -moz-box-shadow: inset 2px 2px 5px 0px rgba(0,0,0,0.19);
+  box-shadow: inset 2px 2px 5px 0px rgba(0,0,0,0.19);
+  text-transform: uppercase;
+
+}
+.transparent-col {
+  border-radius: 3px;
+  padding: 10px;
+  background: rgb(54, 25, 25);
+  background: rgba(54, 25, 25, .9);
+
+}
+.search {
+ min-height: 90vh; /* These two lines are counted as one :-)       */
+
+ display: flex;
+ align-items: center;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}

@@ -1,0 +1,9 @@
+.character-items {
+  background: white;
+  margin-bottom: 10px;
+  border-right: 8px solid;
+  border-opacity:1;
+}
+.character-items img {
+  border-radius: 3px;
+}
