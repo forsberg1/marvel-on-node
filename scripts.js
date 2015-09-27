@@ -1,25 +1,4 @@
-exports.templateLogic = {
 
-  getCharacters : function (req, res, character_name) {
-
-  },
-  getCharacter : function(req, res, id) {
-    var request_uri = config.marvel.end_point + "/v1/public/characters/"+id+'?'+scripts.Marvel.auth_query()
-    var options = { url: request_uri, method: "GET" }
-
-    function callback(error, response, body) {
-      var character = JSON.parse(body);
-      console.log(character.data.results)
-      res.render('application', {character: character.data.results[0]})
-    }
-    request(options, callback)
-  },
-
-  getStoryByCharacterId : function(req, res, id) {
-    var request_uri = config.marvel.end_point + "/v1/public/characters/"+id+"/stories/"+'?'+scripts.Marvel.auth_query()
-    var options = { url: request_uri, method: "GET" }
-  }
-}
 exports.Marvel = {
 
   auth_query : function() {
@@ -35,11 +14,6 @@ exports.Marvel = {
     }
 
     return qs.stringify(params)
-  },
-
-  get : function(path, options) {
-
-
-
   }
+
 }
