@@ -1,12 +1,10 @@
 <h1>Characters</h1>
-<table class="table table-bordered story-characters" style="text-align: left;">
-  <tr>
-    <th></th>
+<table class="table  story-characters" style="text-align: left; ">
+  <tr style=" border: none !important;">
     <th></th>
     <th>Name</th>
   {{#each this}}
     <tr>
-      <td>{{@index}}</td>
       <td><img class="story-characters" src="{{marvelThumb thumbnail 'small'}}"></td>
       <td><a class="a-style" href="/character/{{id}}">{{name}}</a></td>
     </tr>

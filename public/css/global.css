@@ -11,29 +11,92 @@ html {
    background: ; /* For Safari 5.1 to 6.0 */
 
 }
+#overlay {
+  background: rgba(0,0,0,0.8);
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+div {
+  z-index: 3;
+}
 p {
+  color: white;
   font-size: 1em;
   line-height: 1.25em;
   margin: 1.25em 0;
 }
 
 h1,h2,h3 {
+  color: white;
   font-family: 'Bangers', cursive;
 }
+
 input[type="search"] {
   font-family: 'Bangers', cursive;
-  color: #B03633;
-
+  color: white;
+  outline: none !important;
   border: none;
   height: 80px;
   font-size: 22pt;
   text-align: center;
-  border-radius: none !important;
-  background: rgb(255, 255, 255);
-  background: rgba(255, 255, 255, .9);
-  -webkit-box-shadow: inset 2px 2px 5px 0px rgba(0,0,0,0.19);
-  -moz-box-shadow: inset 2px 2px 5px 0px rgba(0,0,0,0.19);
-  box-shadow: inset 2px 2px 5px 0px rgba(0,0,0,0.19);
+  border: none !important;
+  border-radius: 0 !important;
+  background: none;
+  padding: 0 !important;
+
+
   text-transform: uppercase;
 
+}
+
+textarea:focus, input:focus{
+    outline: 0 !important;
+}
+*:focus {
+    outline: 0 !important;
+}
+input:focus{
+outline:none !important;
+}
+.search-wrapper {
+  min-height: 90vh;
+
+  display: flex;
+  align-items: center;
+}
+.border {
+  border-bottom: 1px solid white;
+}
+.form-control:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+@keyframes blinker {
+  0% { visibility: visible; }
+  50% { visibility: hidden; }
+  100% { visibility: visible; }
+}
+
+.waitingToType {
+  animation: blinker 0.7s cubic-bezier(.5, 0, 1, 1) infinite alternate;
+}
+
+@keyframes blinker {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.waitingToType:focus {
+  animation: none !important;
+  @keyframes blinker {
+    from { opacity: 1; }
+    to { opacity: 1; }
+  }
 }

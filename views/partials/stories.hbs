@@ -1,14 +1,12 @@
 {{#if stories.items}}
   <h2>Stories</h2>
-  <table class="table table-bordered table-responsive" style="text-align: left;">
+  <table class="table table-condensed" style="text-align: left;">
     <tr>
-      <th></th>
       <th>Name</th>
       <th>Type</th>
     </tr>
     {{#each stories.items}}
       <tr>
-        <td>{{@index}}</td>
         <td><a href="/story/{{resurceToId this.resourceURI}}">{{this.name}}</a></td>
         <td>{{this.type}}</td>
       </tr>

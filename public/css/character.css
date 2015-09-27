@@ -1,4 +1,4 @@
-#character-thub {
+#character-thum {
   width: 200px;
   height: 200px;
   border-radius: 100px;
@@ -7,5 +7,9 @@
   -webkit-box-shadow: inset -2px 2px 5px -1px rgba(0,0,0,0.85);
   -moz-box-shadow: inset -2px 2px 5px -1px rgba(0,0,0,0.85);
   box-shadow: inset -2px 2px 5px -1px rgba(0,0,0,0.85);
-  margin-top: 10px;
+}
+.character-box {
+  min-height: 100vh;
+  color: white;
+  padding: 60px;
 }

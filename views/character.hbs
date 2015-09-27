@@ -1,7 +1,10 @@
-<div class="col-md-12 text-center transparent border-radius margin-bottom">
-  <img src="{{marvelThumb character.thumbnail}}" id="character-thub">
+<div class="character-box col-md-8 text-center transparent  margin-bottom">
+  <img src="{{marvelThumb character.thumbnail}}" id="character-thum">
   <h1>{{character.name}}</h1>
   <p>{{character.description}}</p>
+
+
+</div>
+<div class="character-box col-md-4 text-center transarent-light  margin-bottom">
   {{> stories character}}
-  <hr>
 </div>

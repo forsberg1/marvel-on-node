@@ -2,16 +2,17 @@
   background: transparent;
   margin-bottom: 0px;
   padding: 5px;
+  
 }
 
 .characters-items:first-child {
 }
 .characters-items img {
-  width: 150px;
-	height: 150px;
-	border-radius: 75px;
-	-webkit-border-adius: 75px;
-	-moz-border-radius: 75px;
+  width: 120px;
+	height: 120px;
+	border-radius: 60px;
+	-webkit-border-adius: 60px;
+	-moz-border-radius: 60px;
   margin-top: 10px;
   -webkit-box-shadow: inset -2px 2px 5px -1px rgba(0,0,0,0.65);
   -moz-box-shadow: inset -2px 2px 5px -1px rgba(0,0,0,0.65);

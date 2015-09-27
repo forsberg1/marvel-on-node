@@ -7,8 +7,12 @@
   padding: 5px;
 }
 .transparent {
-  background: rgb(255, 255, 255) !important;
-  background: rgba(255, 255, 255, .9) !important;
+  background: rgb(0, 0, 0) !important;
+  background: rgba(0, 0, 0, .5) !important;
+}
+.transarent-light {
+  background: rgb(0, 0, 0) !important;
+  background: rgba(59, 59, 59, 0.5) !important;
 }
 .transparent-col {
   border-radius: 3px;
@@ -17,19 +21,14 @@
 .a-style {
   font-family: 'Bangers', cursive;
   text-decoration: none;
-  color: #3A6E9F;
-  margin-top: 25px;
+  color: white;
+  font-size: 16pt;
   text-transform: uppercase;
 }
 .border-radius {
   border-radius: 3px;
 }
-.search {
- min-height: 90vh; /* These two lines are counted as one :-)       */
 
- display: flex;
- align-items: center;
-}
 
 .col-centered {
     float: none;

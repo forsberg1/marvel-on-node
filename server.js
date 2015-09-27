@@ -81,7 +81,6 @@ app.get('/character/:id(\\d+)/', function(req, res) {
 
   function callback(error, response, body) {
     var character = JSON.parse(body);
-    console.log(character.data.results[0].stories)
     res.render('character', {character: character.data.results[0]})
   }
 
