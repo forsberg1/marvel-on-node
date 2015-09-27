@@ -13,14 +13,18 @@ qs      = require('querystring');
 request = require('request')
 
 app.engine('hbs', hbs.express4({
-  partialsDir: __dirname + '/views',
   defaultLayout: __dirname + '/views/layouts/application'
-}))
-;
+  ,partialsDir: __dirname + '/views/partials'
+}));
+
 app.set('view options', { layout: 'application' });
 app.set('view engine', 'hbs');
-
 // Handlebars helpers
+hbs.registerHelper( "resurceToId", function (resourceURI) {
+  var id = resourceURI.split('/').pop();
+  return id
+});
+
 hbs.registerHelper( "marvelThumb", function ( thumbnail, size ) {
   size = "portrait_xlarge"
   switch(size) {
@@ -75,7 +79,7 @@ app.get('/character/:id(\\d+)/', function(req, res) {
 
   function callback(error, response, body) {
     var character = JSON.parse(body);
-    console.log(character.data.results)
+    console.log(character.data.results[0].stories)
     res.render('character', {character: character.data.results[0]})
   }
 

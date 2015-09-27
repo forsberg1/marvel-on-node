@@ -1,0 +1,37 @@
+.border-radius {
+  border-radius: 5px;
+}
+.spacing {
+  background-color: transparent;
+  border-radius:5px;
+  padding: 5px;
+}
+.transparent {
+  background: rgb(255, 255, 255) !important;
+  background: rgba(255, 255, 255, .9) !important;
+}
+.transparent-col {
+  border-radius: 3px;
+  padding: 10px;
+}
+.a-style {
+  font-family: 'Bangers', cursive;
+  text-decoration: none;
+  color: #3A6E9F;
+  margin-top: 25px;
+  text-transform: uppercase;
+}
+.border-radius {
+  border-radius: 3px;
+}
+.search {
+ min-height: 90vh; /* These two lines are counted as one :-)       */
+
+ display: flex;
+ align-items: center;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
