@@ -4,16 +4,11 @@ var express = require('express')
 
 var app = express();
 app.use(express.static(__dirname + '/public'));
-
-
-
 app.engine('hbs', hbs.express4({
   defaultLayout: __dirname + '/views/layouts/application'
   ,partialsDir: __dirname + '/views/partials'
 }));
-
 app.set('view engine', 'hbs');
-
 // Global Includes
 config  = require('./config/marvel')
 md5     = require('md5')
