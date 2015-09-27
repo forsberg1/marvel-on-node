@@ -10,14 +10,10 @@
   "author": "dsadasd",
   "license": "ISC",
   "dependencies": {
-    "consolidate": "^0.13.1",
     "express": "^4.13.3",
-    "express-handlebars": "^2.0.1",
-    "express3-handlebars": "^0.5.2",
+    "express-hbs": "^0.8.4",
     "handlebars": "^4.0.3",
-    "hogan.js": "^3.0.2",
     "md5": "^2.0.0",
-    "node-hogan": "^0.4.0-1",
     "querystring": "^0.2.0",
     "request": "^2.63.0"
   }

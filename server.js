@@ -1,5 +1,5 @@
 var express = require('express')
-    ,exphbs = require('express-handlebars')
+    ,hbs = require('express-hbs')
 
 
 var app = express();
@@ -12,10 +12,30 @@ scripts = require('./scripts.js')
 qs      = require('querystring');
 request = require('request')
 
-var handlebars = exphbs.create({defaultLayout: 'application'});
-app.engine('handlebars', handlebars.engine);
-app.set('view engine', 'handlebars');
+app.engine('hbs', hbs.express4({
+  partialsDir: __dirname + '/views',
+  defaultLayout: __dirname + '/views/layouts/application'
+}))
+;
+app.set('view options', { layout: 'application' });
+app.set('view engine', 'hbs');
 
+// Handlebars helpers
+hbs.registerHelper( "marvelThumb", function ( thumbnail, size ) {
+  size = "portrait_xlarge"
+  switch(size) {
+    case "large":
+      size = "portrait_xlarge"
+    break;
+    case "medium":
+      size = "portrait_medium"
+    break;
+    case "small":
+      size = "portrait_small"
+    break;
+  }
+  return build_thumb_src = thumbnail.path + "/" + size + ".jpg"
+});
 
 app.get('/', function(request, response) {
   response.render('search')
@@ -50,14 +70,15 @@ app.get('/characters/search', function(req, res) {
 
 app.get('/character/:id(\\d+)/', function(req, res) {
   var character_id = req.params.id
-  var request_uri  = config.marvel.end_point + "/v1/public/characters/"+character_id+'?'+scripts.Marvel.auth_query()
-  var options      = { url: request_uri, method: "GET" }
+  var character_uri  = config.marvel.end_point + "/v1/public/characters/"+character_id+'?'+scripts.Marvel.auth_query()
+  var options      = { url: character_uri, method: "GET" }
 
   function callback(error, response, body) {
     var character = JSON.parse(body);
     console.log(character.data.results)
     res.render('character', {character: character.data.results[0]})
   }
+
   request(options, callback)
 
 

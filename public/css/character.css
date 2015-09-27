@@ -1,0 +1,11 @@
+#character-thub {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -webkit-box-shadow: inset -2px 2px 5px -1px rgba(0,0,0,0.85);
+  -moz-box-shadow: inset -2px 2px 5px -1px rgba(0,0,0,0.85);
+  box-shadow: inset -2px 2px 5px -1px rgba(0,0,0,0.85);
+  margin-top: 10px;
+}

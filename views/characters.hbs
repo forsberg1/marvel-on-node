@@ -1,0 +1,12 @@
+<div class="col-md-12 transparent-col">
+  {{#each character}}
+     <a class="a-style" href="/character/{{this.id}}">
+       <div class="col-md-4 text-center characters-items ">
+          <div class="spacing transparent">
+            <p><img src="{{marvelThumb this.thumbnail 'medium' }}" alt="{{this.name}}"></p>
+            {{this.name}}
+          </div>
+      </div>
+    </a>
+   {{/each}}
+ </div>

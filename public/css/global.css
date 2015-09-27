@@ -1,5 +1,5 @@
 body {
-  background: url('/images/marvel.png') center center no-repeat fixed,linear-gradient(90deg, #C23E3E, black);
+  background: url('/images/marvel.png') center center no-repeat fixed,linear-gradient(90deg, #4F4F4F, black);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -11,7 +11,15 @@ html {
    background: ; /* For Safari 5.1 to 6.0 */
 
 }
+p {
+  font-size: 1em;
+  line-height: 1.25em;
+  margin: 1.25em 0;
+}
 
+h1,h2,h3 {
+  font-family: 'Bangers', cursive;
+}
 input[type="search"] {
   font-family: 'Bangers', cursive;
   color: #B03633;
@@ -21,20 +29,36 @@ input[type="search"] {
   font-size: 22pt;
   text-align: center;
   border-radius: none !important;
-  background: rgb(54, 25, 25);
-  background: rgba(54, 25, 25, .9);
+  background: rgb(255, 255, 255);
+  background: rgba(255, 255, 255, .9);
   -webkit-box-shadow: inset 2px 2px 5px 0px rgba(0,0,0,0.19);
   -moz-box-shadow: inset 2px 2px 5px 0px rgba(0,0,0,0.19);
   box-shadow: inset 2px 2px 5px 0px rgba(0,0,0,0.19);
   text-transform: uppercase;
 
 }
+.spacing {
+  background-color: transparent;
+  border-radius:5px;
+  padding: 5px;
+}
+.transparent {
+  background: rgb(255, 255, 255) !important;
+  background: rgba(255, 255, 255, .9) !important;
+}
 .transparent-col {
   border-radius: 3px;
   padding: 10px;
-  background: rgb(54, 25, 25);
-  background: rgba(54, 25, 25, .9);
-
+}
+.a-style {
+  font-family: 'Bangers', cursive;
+  text-decoration: none;
+  color: #3A6E9F;
+  margin-top: 25px;
+  text-transform: uppercase;
+}
+.border-radius {
+  border-radius: 3px;
 }
 .search {
  min-height: 90vh; /* These two lines are counted as one :-)       */

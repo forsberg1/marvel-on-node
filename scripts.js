@@ -1,7 +1,7 @@
 exports.templateLogic = {
 
   getCharacters : function (req, res, character_name) {
-    
+
   },
   getCharacter : function(req, res, id) {
     var request_uri = config.marvel.end_point + "/v1/public/characters/"+id+'?'+scripts.Marvel.auth_query()
