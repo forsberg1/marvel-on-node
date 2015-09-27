@@ -1,16 +1,11 @@
 var express = require('express')
     ,hbs = require('express-hbs')
-
+    ,request = require('request')
 
 var app = express();
 app.use(express.static(__dirname + '/public'));
 
-// Global Includes
-config  = require('./config/marvel')
-md5     = require('md5')
-scripts = require('./scripts.js')
-qs      = require('querystring');
-request = require('request')
+
 
 app.engine('hbs', hbs.express4({
   defaultLayout: __dirname + '/views/layouts/application'
@@ -18,10 +13,19 @@ app.engine('hbs', hbs.express4({
 }));
 
 app.set('view engine', 'hbs');
+
+// Global Includes
+config  = require('./config/marvel')
+md5     = require('md5')
+scripts = require('./scripts.js')
+qs      = require('querystring');
+
 // Handlebars helpers
 hbs.registerHelper( "resurceToId", function (resourceURI) {
-  var id = resourceURI.split('/').pop();
-  return id
+  console.log(resourceURI)
+  if(resourceURI)
+    var id = resourceURI.split('/').pop();
+    return id
 });
 
 hbs.registerHelper( "marvelThumb", function ( thumbnail, size ) {
@@ -42,10 +46,12 @@ hbs.registerHelper( "marvelThumb", function ( thumbnail, size ) {
   return build_thumb_src = thumbnail.path + "/" + size + ".jpg"
 });
 
+// Root path
 app.get('/', function(request, response) {
   response.render('search')
 });
 
+// Search path like index for characters
 app.get('/characters/search', function(req, res) {
 
   query = req.query.q
@@ -64,10 +70,9 @@ app.get('/characters/search', function(req, res) {
      } else {
        result = {character: characters.data.results}
      }
-     console.log(result)
      res.render('characters', result)
    } else {
-       res.render('application', {notice: "Ohh no, technical issues"})
+       res.render('characters', {error: "Ohh no, technical issues"})
      }
    }
 
@@ -75,6 +80,7 @@ app.get('/characters/search', function(req, res) {
 
 });
 
+// Character page
 app.get('/character/:id(\\d+)/', function(req, res) {
   var character_id = req.params.id
   var character_uri  = config.marvel.end_point + "/v1/public/characters/"+character_id+'?'+scripts.Marvel.auth_query()
@@ -83,17 +89,20 @@ app.get('/character/:id(\\d+)/', function(req, res) {
   function callback(error, response, body) {
 
     var character = JSON.parse(body);
-    if(character.data.results.length > 0) {
 
-      res.render('character', {character: character.data.results[0]})
+    if(character.data.results.length > 0) {
+      result = {character: character.data.results[0]}
     } else {
-      res.render('character', {error: "Ooooops, Technical errors."})
+      result = {error: "Ooooops, Technical errors."}
     }
 
+    res.render('character', result)
   }
 
   request(options, callback)
 })
+
+// Story page
 app.get('/story/:id(\\d+)', function(req, res) {
   var story_id   = req.params.id
   var story_uri  = config.marvel.end_point + "/v1/public/stories/"+story_id+'?'+scripts.Marvel.auth_query()
@@ -110,7 +119,7 @@ app.get('/story/:id(\\d+)', function(req, res) {
 
       function callback(error_c, response_c, body_c) {
         story_characters = JSON.parse(body_c)
-        console.log(story_characters.data.results)
+
         res.render('story', {story: story.data.results[0]
                              ,story_characters: story_characters.data.results})
       }
@@ -123,6 +132,7 @@ app.get('/story/:id(\\d+)', function(req, res) {
 
   request(options, callback)
 })
+
 var port = process.env.PORT || 3000
 
 app.listen(port, function() {
