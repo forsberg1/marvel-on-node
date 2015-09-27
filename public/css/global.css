@@ -21,6 +21,12 @@ html {
   left: 0;
   z-index: 2;
 }
+#notice-wrapper {
+  min-height: 90vh;
+
+  display: flex;
+  align-items: center;
+}
 div {
   z-index: 3;
 }

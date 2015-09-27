@@ -17,7 +17,6 @@ app.engine('hbs', hbs.express4({
   ,partialsDir: __dirname + '/views/partials'
 }));
 
-app.set('view options', { layout: 'application' });
 app.set('view engine', 'hbs');
 // Handlebars helpers
 hbs.registerHelper( "resurceToId", function (resourceURI) {
@@ -48,9 +47,11 @@ app.get('/', function(request, response) {
 });
 
 app.get('/characters/search', function(req, res) {
+
   query = req.query.q
   var request_uri = config.marvel.end_point + "/v1/public/characters?nameStartsWith=" + query + '&' +scripts.Marvel.auth_query()
   var options = { url: request_uri, method: "GET"}
+
   function callback(error, response, body) {
 
    if (!error && response.statusCode == 200) {
@@ -59,7 +60,7 @@ app.get('/characters/search', function(req, res) {
      is_error = Object.keys(characters).length == 0
 
      if (is_error || characters.data.results.length == 0) {
-       result = {notice: 'Ohhh snap no superhero found :('}
+       result = {error: 'Ohhh snap no superhero found :('}
      } else {
        result = {character: characters.data.results}
      }
@@ -80,8 +81,15 @@ app.get('/character/:id(\\d+)/', function(req, res) {
   var options      = { url: character_uri, method: "GET" }
 
   function callback(error, response, body) {
+
     var character = JSON.parse(body);
-    res.render('character', {character: character.data.results[0]})
+    if(character.data.results.length > 0) {
+
+      res.render('character', {character: character.data.results[0]})
+    } else {
+      res.render('character', {error: "Ooooops, Technical errors."})
+    }
+
   }
 
   request(options, callback)
@@ -108,7 +116,7 @@ app.get('/story/:id(\\d+)', function(req, res) {
       }
       request(options_c, callback)
     } else {
-      alert("dsadasda")
+
     }
 
   }
