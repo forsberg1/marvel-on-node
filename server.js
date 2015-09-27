@@ -63,7 +63,8 @@ app.get('/characters/search', function(req, res) {
      if (is_error || characters.data.results.length == 0) {
        result = {error: 'Ohhh snap no superhero found :('}
      } else {
-       result = {character: characters.data.results}
+       console.log(characters)
+       result = {character: characters.data.results, marvel_hug: characters.attributionText}
      }
      res.render('characters', result)
    } else {
@@ -86,7 +87,7 @@ app.get('/character/:id(\\d+)/', function(req, res) {
     var character = JSON.parse(body);
 
     if(character.data.results.length > 0) {
-      result = {character: character.data.results[0]}
+      result = {character: character.data.results[0], marvel_hug: character.attributionText}
     } else {
       result = {error: "Ooooops, Technical errors."}
     }
@@ -114,9 +115,10 @@ app.get('/story/:id(\\d+)', function(req, res) {
 
       function callback(error_c, response_c, body_c) {
         story_characters = JSON.parse(body_c)
-
-        res.render('story', {story: story.data.results[0]
-                             ,story_characters: story_characters.data.results})
+        res.render('story', { story: story.data.results[0]
+                             ,story_characters: story_characters.data.results
+                             ,marvel_hug: story.attributionText
+                            })
       }
       request(options_c, callback)
     } else {
