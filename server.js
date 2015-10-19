@@ -8,6 +8,7 @@ app.engine('hbs', hbs.express4({
   defaultLayout: __dirname + '/views/layouts/application'
   ,partialsDir: __dirname + '/views/partials'
 }));
+app.set('views', __dirname + '/views');
 app.set('view engine', 'hbs');
 // Global Includes
 config  = require('./config/marvel')
