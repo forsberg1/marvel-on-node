@@ -130,7 +130,7 @@ app.get('/story/:id(\\d+)', function(req, res) {
   request(options, callback)
 })
 
-var port = process.env.PORT || 3000
+var port = process.env.PORT || 8000
 
 app.listen(port, function() {
     console.log('Listening on ' + port)
